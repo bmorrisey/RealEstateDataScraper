@@ -20,12 +20,14 @@ HousingDataPlot <- function(city1,city2){
         c2_rp=100*data2$rent/data2$price
         #   print(max(c1_rp,c2_rp))
         bins=seq(0,max(c1_rp,c2_rp)+0.05,0.05)
-        
-        hist(c1_rp,breaks=bins,col=rgb(0,0,1,1/4),xlim=c(0,2),
+        col1=rgb(0,0,1,1/4)
+        col2=rgb(1,0,0,1/4)
+        hist(c1_rp,breaks=bins,col=col1,xlim=c(0,2),ylim=c(0,100),
              xlab="Rent : Price Ratio (%)",
              main="Comparison of Rent Price Ratio")
-        hist(c2_rp,breaks=bins,col=rgb(1,0,0,1/4),xlim=c(0,2),add=T)
+        hist(c2_rp,breaks=bins,col=col2,xlim=c(0,2),ylim=c(0,100),add=T)
         grid()
+        legend("topright",c("One","Two"),col=c(col,col2))
         
         plot(data1$price,data1$rent/data1$sqft,
              xlab="Price($)",
